@@ -4,7 +4,6 @@ from termcolor import colored
 
 
 pp = pprint.PrettyPrinter(indent=4)
-#ppfiles = pprint.PrettyPrinter(indent=4)
 
 #  Open file and read it in line by line
 with open('/Users/bnolte/listdir/list.txt') as f:
