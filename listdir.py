@@ -1,4 +1,9 @@
 import os
+import pprint
+from termcolor import colored
+
+
+pp = pprint.PrettyPrinter(indent=4)
 
 #  Open file and read it in line by line
 with open('/Users/bnolte/listdir/list.txt') as f:
@@ -7,6 +12,6 @@ with open('/Users/bnolte/listdir/list.txt') as f:
 # For each line (directory) list the contents of the dir
 for subdir in directories:
   dircontents =  os.listdir(subdir.rstrip())
-  print(subdir)
-  print(dircontents)
+  print colored(subdir, 'red')
+  pp.pprint(dircontents)
 
