@@ -32,5 +32,4 @@ for subdir in directories:
 
 
 print (mongodb_connect)
-#if connection is not None:
 insert_into_database["mongodirectorylist"].insert(dircontents_parsed)
