@@ -15,7 +15,8 @@ db = client['mongodirectorylist']
 pp = pprint.PrettyPrinter(indent=4)
 
 newcollection = time.time()
-collection = client.mongodirectorylist['newcollection']
+collectionstr = str(newcollection)
+collection = client.mongodirectorylist[collectionstr]
 
 
 with open('/Users/bnolte/listdir/list.txt') as f:
@@ -28,6 +29,8 @@ for directory in directories:
   post = collection.insert_one(formattedfiles)
   pprint.pprint(collection.find_one({"_id": post.inserted_id})) 
   print "objectid=" + str(post.inserted_id)
+print(collection)  
+
 sys.exit()  
 
 
