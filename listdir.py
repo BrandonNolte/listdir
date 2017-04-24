@@ -2,6 +2,7 @@ import os
 import pprint
 import json
 import pymongo
+from pymongo import MongoClient
 from bson import BSON
 from bson import json_util
 from termcolor import colored
@@ -24,16 +25,16 @@ def mongodb_connect(client_uri):
          print "I have failed to connect to mongo {}".format(client_uri)
     return
 
-def connect_to_database(IsThisAnParamButIsThisAlsoAnObject):  #this is my keyword def
+def connect_to_database(dircontents_parsed):  #this is my keyword def
+#    client_uri = mongodb_connect() 
     client_uri = "mongodb://localhost:27017"
-    client = mongodb_connect(client_uri)
+#    client = mongodb_connect(client_uri)
+    client = pymongo.MongoClient(client_uri)
     db = client['mongodirectorylist']
     print client #this should let me see if client and client uri are being called
+    print pymongo.MongoClient.insert(dircontents_parsed)
     return
 
 
-# IsThisAnParamButIsThisAlsoAnObject = (dircontents_parsed) #do i put my insert here? I want to insert dircontents parsed via json to mongo
 
-mongodb_connect("mongodb://localhost:27017")
-print connect_to_database(IsThisAnParamButIsThisAlsoAnObject = ("")) #are functioncalls required to have parameters fed into them? 
-#connect_to_database().insert(dircontents_parsed)
+print mongodb_connect(client_uri = "mongodb://localhost:27017").connect_to_database(dircontents_parsed)
