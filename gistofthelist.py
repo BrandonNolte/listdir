@@ -18,28 +18,13 @@ collection = client.mongodirectorylist.mongocollection
 with open('/Users/bnolte/listdir/list.txt') as f:
   directories = f.readlines()
 
-for x in directories:
-  filelist =  os.listdir(x.rstrip())
-  formattedfiles = {"File": (filelist)}
-
+for directory in directories:
+  strippeddir = directory.rstrip()
+  filelist =  os.listdir(strippeddir)
+  formattedfiles = {"directory":strippeddir, "file":filelist}
+  post = collection.insert_one(formattedfiles)
+  pprint.pprint(collection.find_one({"_id": post.inserted_id})) 
+  print "objectid=" + str(post.inserted_id)
 sys.exit()  
 
 
-
-#print formattedfiles
-
-post = collection.insert_one(formattedfiles)
-#print collection.find()
-print post.inserted_id
-pprint.pprint(collection.find_one({"_id": post.inserted_id})) 
-
-#collectioninsert = collection.(json_string)
-
-
-
-
-#print collection
-
-
-#need to get dircontents into map format
-#result = client.mongodirectorylist.mongocollection.insert_many(dircontents)
