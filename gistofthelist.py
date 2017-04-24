@@ -3,6 +3,7 @@ import sys
 import pprint
 import json
 import pymongo
+import time
 from pymongo import MongoClient
 from bson import BSON
 from bson import json_util
@@ -12,7 +13,9 @@ client = pymongo.MongoClient(client_uri)
 db = client['mongodirectorylist']
 #client.mongodirectorylist
 pp = pprint.PrettyPrinter(indent=4)
-collection = client.mongodirectorylist.mongocollection
+
+newcollection = time.time()
+collection = client.mongodirectorylist['newcollection']
 
 
 with open('/Users/bnolte/listdir/list.txt') as f:
