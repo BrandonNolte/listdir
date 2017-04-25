@@ -31,6 +31,10 @@ for directory in directories:
   print "objectid=" + str(post.inserted_id)
 print(collection)  
 
+### next feature should be relationship building. Perhaps we could identify the diffrence between a file and a directory. I think it would be good goal to have a program that walks the entire directory structure. and is able to id each bit
+#first story I will add file type mapping into the program giving it a field structure as fields
+#second story should be to search for paths
+
 sys.exit()  
 
 
