@@ -32,12 +32,14 @@ for directory in directories:
   filelist =  os.listdir(directory)
   for file in filelist: 
     stringfile = str(file)
-    file = str(directory) + str(file) 
-    is_dir = os.path.isdir(file)
-    formattedfiles = {"file":file, "is_dir:":is_dir} ### should this be in the for sub loop? 
-    post = collection.insert_one(formattedfiles)
-    pprint.pprint(collection.find_one({"_id": post.inserted_id})) 
-    print "objectid=" + str(post.inserted_id)
+    print(os.path.join(directory, stringfile))
+  joinedfile = directory + stringfile
+  statlist = os.lstat(filelist)
+  formattedfiles = {"directory":path, "file":file, "is_dir:":file} ### should this be in the for sub loop? 
+  post = collection.insert_one(formattedfiles)
+  print(collection)  
+  pprint.pprint(collection.find_one({"_id": post.inserted_id})) 
+  print "objectid=" + str(post.inserted_id)
 
 ### next feature should be relationship building. Perhaps we could identify the diffrence between a file and a directory. I think it would be good goal to have a program that walks the entire directory structure. and is able to id each bit
 #first story I will add file type mapping into the program giving it a field structure as fields
